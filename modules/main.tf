@@ -3,3 +3,7 @@ module "src" {
   x = var.x
   y = var.y
 }
+
+variable "x" {}
+
+variable "y" {}
