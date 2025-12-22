@@ -27,7 +27,7 @@ variable "list" {
     default = ["kishore",2,false]
 }
 
-varible "map" {
+variable "map" {
     default ={
         name = "kishore"
         course = "azure"
