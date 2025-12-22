@@ -10,6 +10,7 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
+}
   
 
   data "azurerm_resource_group" "learn" {
