@@ -22,6 +22,10 @@ provider "azurerm" {
     value=data.azurerm_resource_group.learn1
   } 
 
+  data "azurerm_resource_group" "learn" {
+    name="project-setup-1"
+  }
+
   data "azurerm_subnet" "example" {
   name                 = "default"
   virtual_network_name = "learnterraform"
@@ -47,8 +51,8 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "new-vm"
-  location              = data.azurerm_resource_group.learn1.location
-  resource_group_name   = data.azurerm_resource_group.learn1.name
+  location              = data.azurerm_resource_group.learn.location
+  resource_group_name   = data.azurerm_resource_group.learn.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
 
