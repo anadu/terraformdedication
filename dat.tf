@@ -21,3 +21,25 @@ provider "azurerm" {
   output "resourcegroupread" {
     value=data.azurerm_resource_group.learn
   } 
+
+  data "azurerm_subnet" "example" {
+  name                 = "default"
+  virtual_network_name = "terraformvm-vnet"
+  resource_group_name  = "project-setup-1"
+}
+
+output "subnet_id" {
+  value = data.azurerm_subnet.example.id
+}
+
+resource "azurerm_network_interface" "main" {
+  name                = "${var.prefix}-nic"
+  location            = data.azurerm_resource_group.learn.location
+  resource_group_name = data.azurerm_resource_group.learn.name
+
+  ip_configuration {
+    name                          = "testconfiguration1"
+    subnet_id                     = data.azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
