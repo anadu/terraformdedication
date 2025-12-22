@@ -39,3 +39,8 @@ variable "map" {
 output "list" {
     value = var.list[1]
 }
+
+#Acessin the map value
+ output "map" {
+    value = var.map["name"]
+ }
