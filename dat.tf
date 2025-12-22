@@ -33,7 +33,7 @@ output "subnet_id" {
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${var.prefix}-nic"
+  name                = "network-nic"
   location            = data.azurerm_resource_group.learn.location
   resource_group_name = data.azurerm_resource_group.learn.name
 
