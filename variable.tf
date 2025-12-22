@@ -50,5 +50,5 @@ output "list" {
  variable "env"{}
 
  output "whicnenv" {
-    value var.env
+    value = var.env
  }
