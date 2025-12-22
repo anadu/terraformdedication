@@ -1,3 +1,3 @@
 output "max" {
-    value = "max(5, 12, 9)"
+    value = max(5, 12, 9)
 }
