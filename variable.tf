@@ -52,3 +52,15 @@ output "list" {
  output "whicnenv" {
     value = var.env
  }
+
+variable "test" {}
+
+variable "env1"{}
+
+output "test" {
+    value = var.test
+}
+
+output "env1" {
+    value = var.env1
+}
