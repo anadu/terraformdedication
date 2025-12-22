@@ -17,3 +17,6 @@ provider "azurerm" {
   data "azurerm_resource_group" "learn" {
     name="project-setup-1"
   }
+
+  output "resourcegroupread"
+    value=data.azurerm_resource_group.learn
