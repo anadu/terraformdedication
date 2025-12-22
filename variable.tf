@@ -11,3 +11,31 @@ output "print" {
 output "synstax" {
     value = "${var.plain}-text"
 }
+
+#datatypes
+#string
+#boolean
+#number
+
+#variable types
+#plain
+#list -- list it have one key and more values 
+#map -- A key have again key and value 
+
+#list
+variable "list" {
+    default = ["kishore",2,false]
+}
+
+varaible "map" {
+    default ={
+        name = "kishore"
+        course = "azure"
+        cloud = "devops"
+    }
+}
+
+#Acessing list value
+output "list" {
+    value = var.list[1]
+}
