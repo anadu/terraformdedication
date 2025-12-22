@@ -51,8 +51,8 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "new-vm"
-  location              = data.azurerm_resource_group.learn.location
-  resource_group_name   = data.azurerm_resource_group.learn.name
+  location              = data.azurerm_resource_group.learn1.location
+  resource_group_name   = data.azurerm_resource_group.learn1.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
 
