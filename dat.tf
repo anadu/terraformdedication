@@ -14,18 +14,18 @@ provider "azurerm" {
 }
   
 
-  data "azurerm_resource_group" "learn" {
-    name="project-setup-1"
+  data "azurerm_resource_group" "learn1" {
+    name="test"
   }
 
   output "resourcegroupread" {
-    value=data.azurerm_resource_group.learn
+    value=data.azurerm_resource_group.learn1
   } 
 
   data "azurerm_subnet" "example" {
   name                 = "default"
-  virtual_network_name = "terraformvm-vnet"
-  resource_group_name  = "project-setup-1"
+  virtual_network_name = "learnterraform"
+  resource_group_name  = "test"
 }
 
 output "subnet_id" {
@@ -34,8 +34,8 @@ output "subnet_id" {
 
 resource "azurerm_network_interface" "main" {
   name                = "network-nic"
-  location            = data.azurerm_resource_group.learn.location
-  resource_group_name = data.azurerm_resource_group.learn.name
+  location            = data.azurerm_resource_group.learn1.location
+  resource_group_name = data.azurerm_resource_group.learn1.name
 
   ip_configuration {
     name                          = "testconfiguration1"
@@ -47,8 +47,8 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "new-vm"
-  location              = data.azurerm_resource_group.learn.location
-  resource_group_name   = data.azurerm_resource_group.learn.name
+  location              = data.azurerm_resource_group.learn1.location
+  resource_group_name   = data.azurerm_resource_group.learn1.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
 
