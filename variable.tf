@@ -44,3 +44,11 @@ output "list" {
  output "map" {
     value = var.map["name"]
  }
+
+ # when we keep the value terraform.tfvars automatically pick the value
+
+ variable "env"{}
+
+ output "whicnenv" {
+    value var.env
+ }
