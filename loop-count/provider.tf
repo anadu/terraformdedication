@@ -4,6 +4,6 @@ provider "azurerm" {
 }
 
 
-resource ""null_resource" "empty"{
+resource "null_resource" "empty"{
     count = 10
 }
