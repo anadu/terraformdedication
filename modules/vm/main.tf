@@ -1,24 +1,24 @@
 resource "azurerm_resource_group" "rg" {
-    name = "dedication"
+    name = var.component
     location =  "West Europe"
 }
 
 resource "azurerm_virtual_network" vnet {
-    name = "vnet"
+    name = var.component
     resource_group_name = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
     address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "internal" {
-  name                 = "internal"
+  name                 = var.component
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "network-nic"
+  name                = var.component
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
