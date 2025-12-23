@@ -3,7 +3,3 @@ module "vm" {
   component = "cart"
 }
 
-module "vm" {
-  source = "./vm"
-  component = "learn"
-}
