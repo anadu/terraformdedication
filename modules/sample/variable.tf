@@ -1,2 +1,0 @@
-variable "x"{}
-variable "y"{}
