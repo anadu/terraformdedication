@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
     count = length(var.rg)
-    name = new "${var.rg[count.index]}"
+    name = "${var.rg[count.index]}"new
     location =  "West Europe"
 }
 
