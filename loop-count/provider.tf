@@ -3,18 +3,17 @@ provider "azurerm" {
   subscription_id="a3bdf793-32e4-4604-aa40-ad21d74b1bdd"
 }
 
-resource "null_resource" "test" {
-   count = length(var.demo) 
-   provisioner "local-exec" {
-     command = "echo ${var.demo[count.index]}"
-  }
+resource "local_file" "foo" {
+  for_each = var.map  
+  content  = each.value
+  filename = "tmp/${each.key}"
 }
-   
 
-
-
-variable "demo" {
- default = ["kishore","orange","ban"]
+variable "map" {
+  default = {
+    name ="kishore"
+    course = "devops"
+  }
 }
 
 
