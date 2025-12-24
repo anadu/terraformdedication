@@ -14,7 +14,7 @@ resource "null_resource" "test" {
 
 
 variable "demo" {
- default = ["kishore","orange"]
+ default = ["kishore","orange","ban"]
 }
 
 
