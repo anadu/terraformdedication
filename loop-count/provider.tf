@@ -6,7 +6,7 @@ provider "azurerm" {
 resource "null_resource" "test" {
    count = length(var.demo) 
    provisioner "local-exec" {
-    command = "echo ${var.demo[count.index]}"
+     command = "echo ${var.demo[count.index]}"
   }
 }
    
