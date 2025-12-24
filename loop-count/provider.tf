@@ -15,9 +15,7 @@ variable "demo" {
 
 
 resource "azurerm_resource_group" "rg" {
-  count    = 3
-
-  name     = "test-${count.index}"
+  name     = "test"
   location = "West Europe"
 
   tags = {
