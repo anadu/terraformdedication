@@ -5,7 +5,7 @@ provider "azurerm" {
 
 data "azurerm_resources" "example" {
    for_each = var.rg 
-   resource_group_name = each.value.["name"]
+   resource_group_name = each.value["name"]
 }
 
 
