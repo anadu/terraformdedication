@@ -4,9 +4,18 @@ provider "azurerm" {
 }
 
 data "azurerm_resources" "example" {
-  resource_group_name = "glss"
+   for_each = var.rg 
+   resource_group_name = each.value.["name"]
 }
 
-output "print" {
-    value = data.azurerm_resources.example
+
+variable "rg" {
+    default = {
+       resource_group = {
+          name = "glss"
+        } 
+       resource_groups = {
+          name = "clss"
+       }
+    }
 }
