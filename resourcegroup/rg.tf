@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "rg" {
 
 
 variable "rg" {
-    default = ["East US","West Europe"]
+    default = ["East","West"]
 }
 
 
