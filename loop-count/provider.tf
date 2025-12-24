@@ -5,9 +5,24 @@ provider "azurerm" {
 
 resource "null_resource" "test" {
    count = length(var.demo) 
+   
 
 }
 
 variable "demo" {
  default = ["kishore","orange"]
 }
+
+
+resource "azurerm_resource_group" "rg" {
+  count    = 3
+
+  name     = "test-${count.index}"
+  location = "West Europe"
+
+  tags = {
+    name = "kishore-${count.index}"
+  }
+}
+
+
