@@ -21,5 +21,8 @@ variable "rg" {
 }
 
 output "print" {
-    output = data.azurerm_resource_group.example
+    output = data.azurerm_resources.example
 }
+
+
+
