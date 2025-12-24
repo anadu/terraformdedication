@@ -5,14 +5,18 @@ provider "azurerm" {
 
 resource "local_file" "foo" {
   for_each = var.map  
-  content  = each.value
-  filename = "tmp/${each.key}"
+  content  = each.value["test"]
+  filename = "/tmp/${each.key}"
 }
 
 variable "map" {
   default = {
-    name ="kishore"
-    course = "devops"
+    name = {
+       test = "this my first experiement" 
+    }
+    course = {
+        test = "devops"
+    }
   }
 }
 
