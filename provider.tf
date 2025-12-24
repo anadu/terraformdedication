@@ -19,3 +19,7 @@ variable "rg" {
        }
     }
 }
+
+output "print" {
+    output = data.azurerm_resource_group.example
+}
