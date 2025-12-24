@@ -5,23 +5,17 @@ provider "azurerm" {
 
 resource "null_resource" "test" {
    count = length(var.demo) 
+   provisioner "local-exec" {
+    command = "echo ${var.demo[count.index]}"
+  }
+}
    
 
-}
+
 
 variable "demo" {
  default = ["kishore","orange"]
 }
 
-
-resource "azurerm_resource_group" "rg" {
-  count    = 1
-  name     = "test"
-  location = "West Europe"
-
-  tags = {
-    name = "kishore-${count.index}"
-  }
-}
 
 
