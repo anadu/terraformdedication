@@ -15,6 +15,7 @@ variable "demo" {
 
 
 resource "azurerm_resource_group" "rg" {
+  count    = 1
   name     = "test"
   location = "West Europe"
 
