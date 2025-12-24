@@ -1,7 +1,7 @@
-data "azurerm_resource_group" "example" {
-  name = "test"
+data "azurerm_resources" "example" {
+  resource_group_name = "glss"
 }
 
-output "test" {
-    value = data.azurerm_resource_group.example
+output "print" {
+    value = data.azurerm_resources.example
 }
