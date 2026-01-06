@@ -11,3 +11,7 @@ variable "subnet" {
 
 variable "vnetname" {
 }
+
+
+variable "vmsize" {
+}
