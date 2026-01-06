@@ -1,6 +1,5 @@
-resource "azurerm_resource_group" "rg" {
-    name = var.component
-    location =  "West Europe"
+data "azurerm_resource_group" "rg" {
+    name = var.rg
 }
 
 resource "azurerm_virtual_network" vnet {
