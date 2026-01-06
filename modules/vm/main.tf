@@ -16,7 +16,7 @@ resource "azurerm_network_interface" "main" {
   resource_group_name = data.azurerm_resource_group.rg.name
 
   ip_configuration {
-    name                          = "testconfiguration1"
+    name                          = "vmconfiguration"
     subnet_id                     = data.azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
   }
@@ -24,8 +24,8 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   name                  = var.component
-  location              = azurerm_resource_group.rg.location
-  resource_group_name   = azurerm_resource_group.rg.name
+  location              = data.azurerm_resource_group.rg.location
+  resource_group_name   = data.azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = var.vmsize
 
