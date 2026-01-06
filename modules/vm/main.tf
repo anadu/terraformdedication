@@ -2,7 +2,7 @@ data "azurerm_resource_group" "rg" {
     name = var.rg
 }
 
-data "azurerm_subnet" "example" {
+data "azurerm_subnet" "internal" {
   name                 = var.subnet
   virtual_network_name = var.vnetname
   resource_group_name  = var.rg
@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "main" {
 
   ip_configuration {
     name                          = "testconfiguration1"
-    subnet_id                     = azurerm_subnet.internal.id
+    subnet_id                     = data.azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
   }
 }
