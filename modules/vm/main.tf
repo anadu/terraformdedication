@@ -2,24 +2,18 @@ data "azurerm_resource_group" "rg" {
     name = var.rg
 }
 
-resource "azurerm_virtual_network" vnet {
-    name = var.component
-    resource_group_name = azurerm_resource_group.rg.name
-    location = azurerm_resource_group.rg.location
-    address_space       = ["10.0.0.0/16"]
+data "azurerm_subnet" "example" {
+  name                 = var.subnet
+  virtual_network_name = var.vnetname
+  resource_group_name  = var.rg
 }
 
-resource "azurerm_subnet" "internal" {
-  name                 = var.component
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
+
 
 resource "azurerm_network_interface" "main" {
   name                = var.component
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
 
   ip_configuration {
     name                          = "testconfiguration1"
